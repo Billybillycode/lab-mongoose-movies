@@ -10,4 +10,11 @@ router.get("/", async (req, res, next) => {
     }
 });
 
-router
+router.get("/:id", async function (req, res, next) {
+    try {
+    await CelebrityModel.findById(req.param.id)
+    res.render("celebrities")
+} catch (err) {
+    next(err)
+}
+})
